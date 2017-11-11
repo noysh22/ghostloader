@@ -1,0 +1,5 @@
+LIBRARY loader
+EXPORTS
+	Load @1
+	Print @2
+	FreeLoadedModule @3

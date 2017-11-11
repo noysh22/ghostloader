@@ -18,8 +18,21 @@
     <ClInclude Include="PELoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Loader_Internal.hpp">
+    <ClInclude Include="LoadedModule.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="LoadedModule.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PELoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PELoader.def">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
