@@ -137,7 +137,14 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="File.cpp" />
+    <ClCompile Include="MemoryMappedFile.cpp" />
     <ClCompile Include="PELoader.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Exceptions.hpp" />
+    <ClInclude Include="File.hpp" />
+    <ClInclude Include="MemoryMappedFile.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

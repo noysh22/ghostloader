@@ -5,5 +5,33 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PELoader.cpp" />
+    <ClCompile Include="MemoryMappedFile.cpp">
+      <Filter>Common\MemoryMappedFile</Filter>
+    </ClCompile>
+    <ClCompile Include="File.cpp">
+      <Filter>Common\File</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Common">
+      <UniqueIdentifier>{b08738fa-0756-4bae-8b80-a98751e11a91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\File">
+      <UniqueIdentifier>{13603581-150a-4d03-9c5f-b5dc594b3851}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\MemoryMappedFile">
+      <UniqueIdentifier>{f88fc450-801c-4f65-a51c-992e0f1cf274}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MemoryMappedFile.hpp">
+      <Filter>Common\MemoryMappedFile</Filter>
+    </ClInclude>
+    <ClInclude Include="File.hpp">
+      <Filter>Common\File</Filter>
+    </ClInclude>
+    <ClInclude Include="Exceptions.hpp">
+      <Filter>Common</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
