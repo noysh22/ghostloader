@@ -7,26 +7,20 @@
 #include <iostream>
 //#include <tchar.h>
 #include <PELoader.h>
+#include "MemoryMappedFile.hpp"
 
 int main()
 {
 	
 	const std::wstring file(L"C:\\Windows\\System32\\user32.dll");
-	
-	HANDLE h = CreateFile(
-		file.c_str(),
-		GENERIC_READ,
-		FILE_SHARE_READ,
-		nullptr,
-		OPEN_EXISTING,
-		FILE_ATTRIBUTE_NORMAL,
-		nullptr);
 
+	MemoryMappedFile mem_mapped_file(file);
 
+	const auto size = mem_mapped_file.get_file_buffer_size();
 
-	/*std::wcout << L"Hello" << std::endl;
+	std::wcout << L"File size: " << size << std::endl;
 
-	HLOADEDMODULE mod = Load();
+	/*HLOADEDMODULE mod = Load();
 
 	Print(mod);
 

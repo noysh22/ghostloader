@@ -4,9 +4,9 @@
 
 
 MemoryMappedFile::MemoryMappedFile(const std::wstring& file)
-	: File(file), m_hMappedFile(m_hFile)
+	: File(file), m_hMappedFile(create_file_mapping(m_hFile))
 {
-	const uint32_t desired_access = PAGE_READONLY;
+	const uint32_t desired_access = FILE_MAP_READ;
 	const uint32_t file_offset_high = 0;
 	const uint32_t file_offset_low = 0;
 	const size_t num_of_bytes_to_map = 0;
@@ -26,7 +26,7 @@ HANDLE MemoryMappedFile::create_file_mapping(const HANDLE file_handle)
 	std::wcout << L"MemoryMappedFile::create_file_mapping" << std::endl;
 
 	const LPSECURITY_ATTRIBUTES security_attributes = nullptr;
-	const uint32_t protect = PAGE_EXECUTE_READ;
+	const uint32_t protect = PAGE_READONLY;
 	const uint32_t max_size_high = 0;
 	const uint32_t max_size_low = 0;
 	const LPCWSTR name = nullptr;
@@ -75,5 +75,26 @@ MemoryMappedFile::~MemoryMappedFile()
 			<< std::endl;
 	}
 }
+
+PVOID MemoryMappedFile::get_file_buffer() const
+{
+	return m_pFileBuffer;
+}
+
+size_t MemoryMappedFile::get_file_buffer_size() const
+{
+	LARGE_INTEGER size = { 0 };
+	
+	if (0 == GetFileSizeEx(m_hFile, &size))
+	{
+		std::wcout << L"GetFileSizeEx failed with error_code: " << GetLastError()
+			<< std::endl;
+		throw Exception(L"GetFileSizeEx failed", GetLastError());
+	}
+
+	return static_cast<size_t>(size.QuadPart);
+}
+
+
 
 
