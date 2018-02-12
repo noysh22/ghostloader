@@ -1,11 +1,18 @@
 #include "PELoader.h"
 #include <iostream>
 
-HLOADEDMODULE WINAPI Load()
+HLOADEDMODULE WINAPI Load(PVOID pvBuffer, SIZE_T cbBufferSize)
 {
 	try
 	{
-		const auto loaded_mod = new LoadedModule(10);
+		const auto ptDosHeader = static_cast<PIMAGE_DOS_HEADER>(pvBuffer);
+		const auto ptNtHeader = reinterpret_cast<PIMAGE_NT_HEADERS>(static_cast<PBYTE>(pvBuffer) + ptDosHeader->e_lfanew);
+
+		const auto loaded_mod = new LoadedModule(
+			static_cast<PBYTE>(pvBuffer),
+			cbBufferSize,
+			ptDosHeader,
+			ptNtHeader);
 
 		return static_cast<HLOADEDMODULE>(loaded_mod);
 	}

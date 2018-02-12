@@ -4,13 +4,13 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="PELoader.cpp" />
     <ClCompile Include="MemoryMappedFile.cpp">
       <Filter>Common\MemoryMappedFile</Filter>
     </ClCompile>
     <ClCompile Include="File.cpp">
       <Filter>Common\File</Filter>
     </ClCompile>
+    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Common">

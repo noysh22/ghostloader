@@ -13,7 +13,7 @@ extern "C"  {
 
 */
 //PBYTE pbModuleBuffer
-HLOADEDMODULE WINAPI Load();
+HLOADEDMODULE WINAPI Load(PVOID pvBuffer, SIZE_T cbBufferSize);
 
 DWORD WINAPI Print(HLOADEDMODULE mod);
 
