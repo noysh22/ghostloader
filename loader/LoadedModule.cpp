@@ -90,10 +90,21 @@ void LoadedModule::copy_headers()
 	}
 	CopyMemory(nt_header_address, &m_tNtHeader, sizeof(m_tNtHeader));
 	std::wcout << L"Copied NT headers to address: 0x" << std::hex << nt_header_address << std::endl;
+
+	// TODO: change headers address space to READONLY.
+	// TODO: Delete / do not copy the DOS header at all.
 }
 
 void LoadedModule::map_sections(PBYTE pbBuffer, size_t buffer_size) const
 {
-	
+	// Jump to the sections table in the buffer
+	auto sections_ptr = reinterpret_cast<PIMAGE_SECTION_HEADER>(pbBuffer + m_tDosHeader.e_lfanew + sizeof(m_tNtHeader));
+
+	for (auto i = 0; i < m_tNtHeader.FileHeader.NumberOfSections; ++i)
+	{
+		// TODO: map the section using virtual alloc and also virtual protect.
+		PIMAGE_SECTION_HEADER section = sections_ptr + i;
+		std::wcout << L"Section no."<< i << " size: " << section->SizeOfRawData << std::endl;
+	}
 }
 

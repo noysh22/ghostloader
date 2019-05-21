@@ -23,7 +23,8 @@ typedef DWORD (WINAPI* FUNC)(DWORD, DWORD);
 
 int main()
 {
-	const std::wstring file(L"C:\\Windows\\System32\\user32.dll");
+	/*const std::wstring file(L"C:\\Windows\\System32\\user32.dll");*/
+	const std::wstring file(L"Z:\\projects\\peloader\\Output\\Win32\\Debug\\TestDlls\\TestDLLNoReloc.dll");
 
 	MemoryMappedFile mem_mapped_file(file);
 
